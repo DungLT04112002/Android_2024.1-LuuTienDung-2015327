@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="2"
+        android:background="@color/grey1">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="49sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout style="@style/buttonRow">
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="CE">
+        </Button>
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="C"></Button>
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="BS"></Button>
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="/"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/buttonRow">
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="7"></Button>
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="8"></Button>
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="9"></Button>
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="x"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/buttonRow">
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="4"></Button>
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="5"></Button>
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="6"></Button>
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="-"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/buttonRow">
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="1"></Button>
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="2"></Button>
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="3"></Button>
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="+"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/buttonRow">
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="+/-"></Button>
+
+        <Button
+            style="@style/buttonNumber"
+            android:text="0"></Button>
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="."></Button>
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="="></Button>
+
+    </LinearLayout>
+
+</LinearLayout>

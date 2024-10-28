@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grey">#E6E4E4</color> <!-- Đảm bảo màu này được định nghĩa -->
+    <color name="grey1">#CECBCB</color> <!-- Đảm bảo màu này được định nghĩa -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
