@@ -1,24 +1,31 @@
 package com.example.liststudent
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.ListView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 data class Student(
     val name: String,
     val studentId: String
 )
+
 class MainActivity : AppCompatActivity() {
+    private lateinit var adapter: ArrayAdapter<String>
+    private lateinit var listStudentInClass: List<Student>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val inputFind = findViewById<EditText>(R.id.inputFind)
         val textViewStudent = findViewById<ListView>(R.id.listStudent)
-        val listStudentInClass= listOf(
+
+        // Danh sách sinh viên
+        listStudentInClass = listOf(
             Student("Luu Tien Dung", "20215327"),
             Student("Nguyen Van A", "20210001"),
             Student("Tran Thi B", "20210002"),
@@ -38,9 +45,39 @@ class MainActivity : AppCompatActivity() {
             Student("Tran Thi P", "20210016"),
             Student("Hoang Van Q", "20210017")
         )
-        val studentFinalList=listStudentInClass.map{"${it.name}-${it.studentId}"}
 
-        val adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,studentFinalList)
+        // Tạo danh sách hiển thị ban đầu
+        val studentFinalList = listStudentInClass.map { "${it.name} - ${it.studentId}" }
+        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, studentFinalList)
+        textViewStudent.adapter = adapter
 
+        // Thêm TextWatcher cho EditText
+        inputFind.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Chỉ tìm kiếm nếu độ dài đầu vào lớn hơn hoặc bằng 2
+                if (s != null && s.length >= 2) {
+                    filterStudentList(s.toString())
+                } else {
+                    // Hiển thị toàn bộ danh sách nếu không đủ 2 ký tự
+                    adapter.clear()
+                    adapter.addAll(studentFinalList)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
+    // Hàm lọc danh sách sinh viên dựa trên truy vấn
+    private fun filterStudentList(query: String) {
+        val filteredStudents = listStudentInClass.filter {
+            it.name.contains(query, ignoreCase = true) || it.studentId.contains(query)
+        }.map { "${it.name} - ${it.studentId}" }
+
+        // Cập nhật adapter với danh sách đã lọc
+        adapter.clear()
+        adapter.addAll(filteredStudents)
     }
 }
